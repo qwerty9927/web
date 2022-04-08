@@ -1,0 +1,170 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 5px;
+  /* border: 2px solid #ccc; */
+}
+
+i {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a > li {
+  color: #000;
+}
+
+.items ul li {
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, .1);
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: .1s;
+}
+
+.items ul li:not(.admin):hover {
+  background-color: #494e53;
+}
+
+.items ul li:not(.admin):hover i,
+.items ul li:not(.admin):hover p {
+  color: #fff;
+}
+
+.active_click {
+  background-color: #494e53;
+}
+
+.active_click i,
+.active_click p {
+  color: #fff;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+.header {
+  position: relative;
+}
+
+.header_fixed {
+  background-color: #fff;
+  height: 50px;
+  display: flex;
+  box-shadow: 0 2px 10px -2px rgba(0,0,0,.1);
+  position: fixed;
+  width: 100%;
+}
+
+.header_fixed .title {
+  width: 15%;
+  line-height: 50px;
+  text-align: center;
+  
+}
+
+.header_fixed .title p {
+  font-size: 32px;
+  font-weight: 700;
+  background: -webkit-linear-gradient(left, red, green, blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header_fixed .option {
+  width: 85%;
+  line-height: 50px;
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
+}
+
+.container {
+  display: flex;
+  top: 50px;
+  position: relative;
+  z-index: -1;
+}
+
+.container .left_content {
+  position: absolute;
+}
+
+.left_content_fixed {
+  box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, .1);
+  width: 15%;
+  height: 100%;
+  padding: 10px 0 10px 0;
+  position: fixed;
+}
+
+.left_content_fixed .user {
+  padding: 10px 10px 0 10px;
+}
+
+.user ul {
+  list-style-type: none;
+}
+
+.user ul .admin {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.admin .circle {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #ccc;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.menu ul {
+  list-style-type: none;
+  /* background-color: #aaa; */
+  height: 340px;
+  overflow: auto;
+  padding: 0 10px 10px;
+}
+
+.logOut {
+  /* margin: 10px 20px 20px 10px; */
+  margin: 10px;
+  height: 120px; 
+}
+
+.logOut li {
+  display: flex;
+  align-items: center;
+  background-color: #343a40;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+  padding: 12px;
+  margin-top: 45px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.logOut li:hover {
+  background-color: #494e53;
+}

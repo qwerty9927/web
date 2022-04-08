@@ -1,0 +1,134 @@
+.container .right_content {
+  width: 85%;
+  position: absolute;
+  padding: 30px;
+  transform: translateX(17.65%);
+}
+
+.top_home_page {
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.clock {
+  width: 48%;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.clock .time {
+  font-size: 64px;
+  font-weight: 700;
+  text-align: center;
+}
+.clock .time span {
+  background: -webkit-linear-gradient(left, red, green, blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.clock .date {
+  text-align: right;
+  opacity: .2;
+}
+
+.info {
+  width: 48%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
+  border-radius: 10px;
+}
+
+.info img {
+  height: 100px;
+  margin-left: 20px;
+}
+
+.person_info {
+  display: flex;
+}
+
+.person_info div div :first-child {
+  font-weight: 700;
+}
+
+.private_info {
+  margin: 0 20px;
+}
+
+.bottom_home_page {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bottom_home_page .box {
+  margin: 32px 0;
+  position: relative;
+  border-radius: 5px;
+  color: #fff;
+  width: 270px;
+  box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+}
+
+.box .inner {
+  padding: 12px;
+}
+
+.inner span {
+  padding-bottom: 12px;
+  font-size: 30px;
+}
+
+.inner p {
+  padding: 10px 0;
+}
+
+.box .icon {
+  padding: 4px 0;
+  text-align: center;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: rgba(0,0,0,.1);
+}
+
+.icon > i {
+  position: absolute;
+  font-size: 70px;
+  top: 15%;
+  right: 12px;
+  color: rgba(0,0,0,.15);
+  transform: scale(0.9);
+  transition: transform .2s ease-out;
+}
+
+.box:hover .icon > i{
+  transform: scale(1);
+}
+
+.icon a {
+  display: block;
+}
+
+.icon:hover {
+  background-color: rgba(0,0,0,.15);
+}
+
+.bottom_home_page .products {
+  background-color: #17a2b8;
+}
+
+.bottom_home_page .consumer {
+  background-color: #ffc107;
+}
+
+.bottom_home_page .revenue {
+  background-color: #28a745;
+}
+
+.bottom_home_page .order {
+  background-color: #dc3545;
+}
