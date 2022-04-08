@@ -19,7 +19,7 @@
     </div>
     <a href="./?option=quan-ly-khach-hang&action=add">
       <div class="btn_add">
-        <i class="fa-solid fa-house"></i>
+        <i class="fa-solid fa-plus"></i>
         <span>Thêm</span>
       </div>
     </a>
@@ -31,6 +31,8 @@
         <th>Họ Tên</th>
         <th>Địa chỉ</th>
         <th>Số điện thoại</th>
+        <th>Sửa</th>
+        <th>Xóa</th>
       </tr>
       <tbody class="innerArea_customer">
         <?php
@@ -43,6 +45,16 @@
                 <td id='name'>{$row['Ten']}</td>
                 <td>{$row['DiaChi']}</td>
                 <td>{$row['SDT']}</td>
+                <td>
+                  <div class='btn_edit'>
+                    <i class='fa-solid fa-pen-to-square'></i>
+                  </div>
+                </td>
+                <td>
+                  <div class='btn_delete'>
+                    <i class='fa-solid fa-trash-can'></i>
+                  </div>
+                </td>
               </tr>
             ";
           }

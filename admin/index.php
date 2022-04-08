@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./assets/css/layout.css">
   <link rel="stylesheet" href="./assets/css/homePage.css">
   <link rel="stylesheet" href="./assets/css/login.css">
-  <link rel="stylesheet" href="./assets/css/person.css">
+  <link rel="stylesheet" href="./assets/css/category.css">
   <script src="./assets/js/jquery_3.6.0.js"></script>
   <title>Document</title>
 </head>

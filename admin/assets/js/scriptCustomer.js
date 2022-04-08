@@ -3,11 +3,11 @@ let arrFetchForSearching;
 $(document).ready(function(){
   $('#customer_search').keyup(function (){
     if(this.value !== ""){
-      document.querySelector('.page_customer').style.display = "none"
-      document.querySelector('.main_info').style.height = "auto"
+      $('.page_customer').css("display", "none")
+      $('.main_info').css("height", "auto")
     } else {
-      document.querySelector('.page_customer').style.display = "block"
-      document.querySelector('.main_info').style.height = "470px"
+      $('.page_customer').css("display", "block")
+      $('.main_info').css("height", "500px")
     }
     $.ajax({
       method: "POST", 
@@ -27,8 +27,16 @@ $(document).ready(function(){
             <td id='name'>${item.Ten}</td>
             <td>${item.DiaChi}</td>
             <td>${item.SDT}</td>
-            <td>Sửa</td>
-            <td>Xóa</td>
+             <td>
+              <div class='btn_edit'>
+                <i class="fa-solid fa-pen-to-square"></i>
+              </div>
+            </td>
+            <td>
+              <div class='btn_delete'>
+                <i class="fa-solid fa-trash-can"></i>
+              </div>
+            </td>
           </tr>
         `
       })
@@ -55,6 +63,16 @@ $(document).ready(function(){
               <td id='name'>${item.Ten}</td>
               <td>${item.DiaChi}</td>
               <td>${item.SDT}</td>
+              <td>
+                <div class='btn_edit'>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+              </td>
+              <td>
+                <div class='btn_delete'>
+                  <i class="fa-solid fa-trash-can"></i>
+                </div>
+              </td>
             </tr>
         `
       })
