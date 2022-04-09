@@ -1,14 +1,27 @@
-.table {
-
-}
-
 .header_info {
   height: 80px;
   border-radius: 10px;
   box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
   display: flex;
   padding: 20px;
+  margin-bottom: 15px;
   align-items: center;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly
+}
+
+.btn {
+  background-color: blue;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
+  cursor: pointer;
+  color: #fff;
+  border: none;
 }
 
 .quantity {
@@ -57,29 +70,50 @@
   transform: scale(.98);
 }
 
-
 .btn_add {
-  background-color: blue;
-  height: 35px;
-  padding: 0 10px;
-  text-align: center;
-  line-height: 35px;  
-  border-radius: 5px;
-  box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
-}
-.btn_add i {
-  margin: 9px 5px 0 0;
+  margin-right: 20px;
 }
 
-.btn_add:active {
+.btn_close_edit {
+  background-color: rgb(167, 0, 0);
+  display: none;
+}
+
+.btn_add:active, .add:active, .btn_edit:active, .btn_delete:active {
   transform: scale(.98);
+}
+
+.add_data {
+  padding: 30px;
+  box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
+  margin: 15px 0px;
+  border-radius: 10px;
+  display: none;
+}
+
+.col div {
+  text-align: right;
+}
+.col input {
+  margin: 0 0 10px 10px;
+  padding: 8px;
+  width: 200px;
+  height: 30px;
+}
+
+.add {
+  padding: 10px;
+  background-color: blue;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
 }
 
 .main_info {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px 1px rgba(0,0,0,.1);
-  margin-top: 30px;
+  margin-top: 15px;
   height: 500px;
   position: relative;
 }

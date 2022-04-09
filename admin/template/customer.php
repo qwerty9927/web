@@ -4,6 +4,8 @@
   $resultCounter = mysqli_query($conn, $sqlCount);
   $temp = mysqli_fetch_array($resultCounter, MYSQLI_ASSOC)['count'];
   $count = ceil(intval($temp)/10);
+  $last_row = "SELECT * FROM KHACHHANG ORDER BY Makh DESC LIMIT 1";
+  $result_last_row = mysqli_query($conn, $last_row);
 ?>
 <div class="customer table">
   <div class="header_info">
@@ -17,13 +19,46 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
-    <a href="./?option=quan-ly-khach-hang&action=add">
-      <div class="btn_add">
+    <!-- <a href="./?option=quan-ly-khach-hang&action=add"> -->
+      <button class="btn_add btn">
         <i class="fa-solid fa-plus"></i>
         <span>Thêm</span>
-      </div>
-    </a>
+      </button>
+      <button class="btn_close_edit btn">
+        <i class="fa-solid fa-xmark"></i>
+        <span>Close Edit</span>
+      </button>
+    <!-- </a> -->
   </div>
+  <form action="">
+    <div class="add_data row">
+      <div class="add_data_col_1 col">
+        <div>
+          <label for="">Mã khách hàng</label>
+          <input type="text" name="codeCustomer" disabled="true" value="<?php
+            echo mysqli_fetch_array($result_last_row, MYSQLI_ASSOC)['Makh'] + 1;
+          ?>">
+        </div>
+        <div>
+          <label for="">Họ Tên</label>
+          <input type="text" name="fullName">
+        </div>
+      </div>
+      <div class="add_data_col_2 col">
+        <div>
+          <label for="">Địa chỉ</label>
+          <input type="text" name="address">
+        </div>
+        <div>
+          <label for="">SDT</label>
+          <input type="text" name="phoneNumber">
+        </div>
+      </div>
+      <div class="add_data_col_3 col">
+        <button class="btn_action btn"></button>
+      </div>
+    </div>
+  </form>
   <div class="main_info">
     <table>
       <tr>

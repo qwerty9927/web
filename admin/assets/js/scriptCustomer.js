@@ -41,6 +41,7 @@ $(document).ready(function(){
         `
       })
       $('.innerArea_customer').html(string)
+      func_event()
     })
   })
   $(".page_customer ul li").click(function (){
@@ -77,6 +78,35 @@ $(document).ready(function(){
         `
       })
       $('.innerArea_customer').html(string)
+      func_event()
     })
   })
+  func_event()
 })
+
+function func_event(){
+  $(document).ready(function () {
+    $('.btn_add').click(function (){
+      $('.add_data').fadeToggle('slow')
+      if($('.add_data')){
+        $('.add_data').css('display', 'flex')
+        $('.btn_action').text('Thêm')
+      }
+    })
+    $('.btn_edit').click(function (){
+      $('.add_data').fadeIn("slow")
+      $('.add_data').css('display', 'flex')
+      $('.btn_add').css('display', 'none')
+      $('.btn_close_edit').css('display', 'block')
+      $('.btn_action').text('Sửa')
+      $('.btn_close_edit').click(function (){
+        $('.add_data').fadeOut("slow")
+        $('.btn_close_edit').css('display', 'none')
+        $('.btn_add').css('display', 'block')
+      })
+    })
+    $('.btn_delete').click(function (){
+      confirm("Bạn có muốn xóa!")
+    })  
+  })
+}
