@@ -28,5 +28,6 @@
     }
   ?>
   <script src="./assets/js/scriptLogin.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>

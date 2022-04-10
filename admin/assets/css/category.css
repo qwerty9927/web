@@ -94,10 +94,16 @@
 .col div {
   text-align: right;
 }
+
+.col div div span {
+  color:rgb(205, 0, 0);
+  font-size: 12px;
+}
+
 .col input {
-  margin: 0 0 10px 10px;
+  margin: 5px 0 5px 10px;
   padding: 8px;
-  width: 200px;
+  width: 250px;
   height: 30px;
 }
 
@@ -142,7 +148,12 @@ tr:hover {
   color: rgb(147, 0, 0);
 }
 
-.btn_add:active, .btn_edit:active, .btn_delete:active   {
+.btn_action_edit,
+.btn_action_add {
+  display: none;
+}
+
+.btn_add:active, .btn_edit:active, .btn_delete:active, .btn_action_add:active, .btn_action_edit:active   {
   transform: scale(.98);
 }
 

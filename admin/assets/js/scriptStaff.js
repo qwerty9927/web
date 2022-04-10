@@ -11,7 +11,7 @@ $(document).ready(function(){
     }
     $.ajax({
       method: "POST", 
-      url: './connection/callData.php',
+      url: './connection/ReadData.php',
       data: {
         title: "search",
         access: "NHANVIEN",
@@ -38,7 +38,7 @@ $(document).ready(function(){
     console.log(this.getAttribute("data"))
     $.ajax({
       method: 'POST',
-      url: './connection/callData.php',
+      url: './connection/ReadData.php',
       data: {
         title: "paging",
         access: 'NHANVIEN',

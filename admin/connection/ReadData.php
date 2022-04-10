@@ -7,6 +7,9 @@
     $arrGlobal = paging();
   } else if($_POST['title'] == 'search'){
     $arrGlobal = search();
+  } else if($_POST['title'] == 'nextCode'){
+    echo nextCode();
+    return;
   }
   echo json_encode($arrGlobal);
   close_connect($conn);
@@ -39,16 +42,18 @@
   function paging(){
     global $conn;
     $arrPage = array();
-    $sql = "";
-    if($_POST['access'] == 'KHACHHANG'){
-      $sql = "SELECT * FROM KHACHHANG LIMIT {$_POST['startPoint']}, {$_POST['endPoint']}";
-    } else if($_POST['access'] == 'NHANVIEN'){
-      $sql = "SELECT * FROM NHANVIEN LIMIT {$_POST['startPoint']}, {$_POST['endPoint']}";
-    }
+    $sql = "SELECT * FROM {$_POST['access']} LIMIT {$_POST['startPoint']}, 10";
     $result = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
       array_push($arrPage, $row);
     }
     return $arrPage;
+  }
+
+  function nextCode(){
+    global $conn;
+    $sql = "SELECT * FROM {$_POST['access']} ORDER BY Makh DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);        
+    return mysqli_fetch_array($result, MYSQLI_ASSOC)['Makh'] + 1;
   }
 ?>

@@ -29,7 +29,7 @@ function timer() {
     if(varDate < 10){
       day.innerText = `0${varDate}`
     } else {
-      day.innerText = varDay
+      day.innerText = varDate
     }
     month.innerText = varMonth + 1
     year.innerText = varYear
