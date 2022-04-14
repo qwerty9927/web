@@ -1,25 +1,8 @@
 $(document).ready(function(){
-  localStorage.setItem('page', '1')
+  search_fetch("", "KHACHHANG", 1) // Khởi tạo trang đầu
   submitAdd()
   submitUpdate()
 })
-
-function paging_fetch(self){
-    let arrFetchForPaging;
-    localStorage.setItem('page', self.getAttribute("data"))
-    $.ajax({
-      method: 'POST',
-      url: './connection/ReadData.php',
-      data: {
-        title: "paging",
-        access: "KHACHHANG",
-        startPoint: (parseInt(self.getAttribute("data")) - 1) * 10,
-      }
-    }).done(function(response){
-      arrFetchForPaging = JSON.parse(response)
-      handleResponse(arrFetchForPaging)
-    })
-}
 
 function submitAdd(){
   let checkName = 1
@@ -55,26 +38,21 @@ function submitAdd(){
           title: "create",
           access: "KHACHHANG",
           startPoint: (parseInt(localStorage.getItem('page')) - 1) * 10,
-          Makh: $('.add_data input[name = "codeCustomer"]').val(),
-          Hoten: $('.add_data input[name = "fullName"]').val(),
-          DiaChi: $('.add_data input[name = "address"]').val(),
-          SDT: $('.add_data input[name = "phoneNumber"]').val()
+          info: {
+            Makh: $('.add_data input[name = "codeCustomer"]').val(),
+            Ten: $('.add_data input[name = "fullName"]').val(),
+            DiaChi: $('.add_data input[name = "address"]').val(),
+            SDT: $('.add_data input[name = "phoneNumber"]').val(),
+            MATK: 3
+          }
         }
       }).done(function (response){
           let result = JSON.parse(response)
           console.log(result)
           if(result){
-            let count = String(parseInt($('.quantity span').text()) + 1)
-            let pages = Math.ceil(count/10)
-            $('.quantity span').text(count)
-            let string = ""
-            for(let i = 1;i <= pages;i++){
-               string += `<li data=${i} onclick="paging_fetch(this)">${i}</li>`
-            }
-            handleResponse(result)
-            $('.page_customer ul').html(string)
-            alert("Tạo thành công")
             $('.add_data').fadeOut('slow')
+            alert("Tạo thành công")
+            location.reload()
           } else {
             alert("Tạo thất bại")
           }
@@ -118,27 +96,21 @@ function submitUpdate(){
           access: "KHACHHANG",
           startPoint: (parseInt(localStorage.getItem('page')) - 1) * 10,
           Makh: $('.add_data input[name = "codeCustomer"]').val(),
-          Hoten: $('.add_data input[name = "fullName"]').val(),
-          DiaChi: $('.add_data input[name = "address"]').val(),
-          SDT: $('.add_data input[name = "phoneNumber"]').val()
+          info: {
+            Ten: $('.add_data input[name = "fullName"]').val(),
+            DiaChi: $('.add_data input[name = "address"]').val(),
+            SDT: $('.add_data input[name = "phoneNumber"]').val()
+          }
         }
       }).done(function (response){
           let result = JSON.parse(response)
           console.log(result)
           if(result){
-            let count = String(parseInt($('.quantity span').text()) + 1)
-            let pages = Math.ceil(count/10)
-            $('.quantity span').text(count)
-            let string = ""
-            for(let i = 1;i <= pages;i++){
-              string += `<li data=${i} onclick="paging_fetch(this)">${i}</li>`
-            }
-            handleResponse(result)
-            $('.page_customer ul').html(string)
-            alert("Sửa thành công")
             $('.add_data').fadeOut('slow')
             $('.btn_add').css('display', 'block')
             $('.btn_close_edit').css('display', 'none')
+            alert("Sửa thành công")
+            location.reload()
           } else {
             alert("Sửa thất bại")
           }
@@ -162,39 +134,11 @@ function deleteData(access){
       let result = JSON.parse(response)
       console.log(result)
       if(result){
-        let count = String(parseInt($('.quantity span').text()) - 1)
-        let pages = Math.ceil(count/10)
-        $('.quantity span').text(count)
-        let string = ""
-        for(let i = 1;i <= pages;i++){
-          string += `<li data=${i} onclick="paging_fetch(this)">${i}</li>`
-        }
-        handleResponse(result)
-        $('.page_customer ul').html(string)
         alert("Xóa thành công")
+        location.reload()
       } else {
         alert("Xóa thất bại vì là tham chiếu khóa ngoại")
       }
     })
   }
-}
-
-function handleResponse(arr){
-  let string = arr.map( item => {
-    return `
-      <tr>
-        <td>${item.Makh}</td>
-        <td id='name'>${item.Ten}</td>
-        <td>${item.DiaChi}</td>
-        <td>${item.SDT}</td>
-        <td class='btn_edit' data=${item.Makh} onclick="input_edit(this)">
-          <i class="fa-solid fa-pen-to-square"></i>
-        </td>
-        <td class='btn_delete' data=${item.Makh} onclick="deleteData(this)">
-          <i class="fa-solid fa-trash-can"></i>
-        </td>
-      </tr>
-    `
-  })
-  $('.innerArea').html(string)
 }

@@ -1,23 +1,23 @@
-function search_fetch(self, subject){ // Đã tối ưu
-  let arrFetchForSearching;
-  if(self.value !== ""){
-    $('.page').css("display", "none")
-    $('.main_info').css("height", "auto")
-  } else {
-    $('.page').css("display", "block")
-    $('.main_info').css("height", "500px")
-  }
+function search_fetch(value, subject, page){
   $.ajax({
     method: "POST", 
     url: './connection/ReadData.php',
     data: {
       title: "search",
       access: subject,
-      searchParameter: self.value
+      startPoint: (page - 1) * 10,
+      searchParameter: value
     }
   }).done(function (response){
-    arrFetchForSearching = JSON.parse(response)
-    handleResponse(arrFetchForSearching)
+    let result = JSON.parse(response)
+    $('.quantity span').text(result.count)
+    let pages = Math.ceil(result.count/10)
+    let string = ""
+    for(let i = 1;i <= pages;i++){
+        string += `<li data=${i} onclick="search_fetch('${value}', '${subject}', ${i})">${i}</li>` // phân trang 
+    }
+    $('.page ul').html(string)
+    handleResponse(result.value)
   })
 }
 
@@ -32,10 +32,12 @@ function input_add(subject){
     url: './connection/ReadData.php',
     data: {
       title: "nextCode",
-      access: subject
+      access: subject,
+      field: "Makh"
     }
   }).done(function (response){
-    $('.add_data input[name = "codeCustomer"]').val(response)
+    let result = JSON.parse(response)
+    $('.add_data input[name = "codeCustomer"]').val(result)
   })
 }
 
@@ -57,3 +59,25 @@ function input_edit(access){
     $(this).val($(_this).closest('tr').children('td')[index].textContent)
   })
 }
+
+function handleResponse(arr){
+  let string = arr.map( item => {
+    return `
+      <tr>
+        <td>${item.Makh}</td>
+        <td id='name'>${item.Ten}</td>
+        <td>${item.DiaChi}</td>
+        <td>${item.SDT}</td>
+        <td class='btn_edit' data=${item.Makh} onclick="input_edit(this)">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </td>
+        <td class='btn_delete' data=${item.Makh} onclick="deleteData(this)">
+          <i class="fa-solid fa-trash-can"></i>
+        </td>
+      </tr>
+    `
+  })
+  $('.innerArea').html(string)
+}
+
+

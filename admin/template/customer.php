@@ -1,18 +1,11 @@
-<?php
-  $conn = connect("cuahang");
-  $sqlCount = "SELECT COUNT(*) as count FROM KHACHHANG";
-  $resultCounter = mysqli_query($conn, $sqlCount);
-  $temp = mysqli_fetch_array($resultCounter, MYSQLI_ASSOC)['count'];
-  $count = ceil(intval($temp)/10);
-?>
 <div class="customer table">
   <div class="header_info">
     <div class="quantity">
-      <span><?php echo $temp ?></span>
+      <span></span>
       <p>Số lượng khách hàng</p>
     </div>
     <div class="search_box">
-      <input type="text" placeholder="Search..." id="search_box" onkeyup="search_fetch(this,'KHACHHANG')">
+      <input type="text" placeholder="Search..." id="search_box" onkeyup="search_fetch(this.value,'KHACHHANG', 1)">
       <div class="icon_search">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
@@ -73,35 +66,12 @@
         <th>Xóa</th>
       </tr>
       <tbody class="innerArea">
-        <?php
-          $sql = "SELECT * FROM KHACHHANG LIMIT 0, 10";
-          $result = mysqli_query($conn, $sql);
-          while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            echo "
-              <tr>
-                <td>{$row['Makh']}</td>
-                <td id='name'>{$row['Ten']}</td>
-                <td>{$row['DiaChi']}</td>
-                <td>{$row['SDT']}</td>
-                <td class='btn_edit' data={$row['Makh']} onclick='input_edit(this)'>
-                  <i class='fa-solid fa-pen-to-square'></i>
-                </td>
-                <td class='btn_delete' data={$row['Makh']} onclick='deleteData(this)'>
-                  <i class='fa-solid fa-trash-can'></i>
-                </td>
-              </tr>
-            ";
-          }
-        ?>
+        
       </tbody>
     </table>
     <div class="page">
       <ul>
-        <?php     
-          for($i = 1;$i <= $count;$i++){
-            echo "<li data=$i onclick='paging_fetch(this)'>$i</li>";
-          }
-        ?>
+        
       </ul>
     </div>
   </div>
